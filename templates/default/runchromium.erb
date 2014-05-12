@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Run chrome
+#DASH="https://www.leftronic.com/share/g/OqF269"
+DASH="http://dashboards.theodi.org/tech"
+
+while [ 1 ]
+do
+  /usr/bin/chromium --kiosk --incognito ${DASH}
+  sleep 10s
+done

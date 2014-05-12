@@ -1,0 +1,10 @@
+{
+  "chef": {
+    "chef_server_url": "https://chef.theodi.org",
+    "client_key": "deploy/key.pem",
+    "node_name": "odi"
+  },
+  "ssl": {
+    "verify": false
+  }
+}

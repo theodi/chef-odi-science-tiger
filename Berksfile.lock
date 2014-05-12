@@ -1,16 +1,29 @@
 DEPENDENCIES
+  chef-client
   chromium
     git: git://github.com/klyall/cookbook-chromium.git
     revision: c8d38d9b7678d12e481a76ecf5a5761ae3b1d8b2
   odi-science-tiger
     path: .
     metadata: true
+  odi-users
+    git: git://github.com/theodi/odi-chef.git
+    revision: b724aa80bd4b166d3bd8e8216e8bc54059ac8461
+    rel: site-cookbooks/odi-users
 
 GRAPH
   apt (2.3.10)
+  chef-client (3.5.0)
+    cron (>= 1.2.0)
+    logrotate (>= 1.2.0)
   chromium (0.0.1)
     apt (>= 0.0.0)
     yum (>= 0.0.0)
-  odi-science-tiger (0.4.1)
+  cron (1.4.0)
+  logrotate (1.5.0)
+  odi-science-tiger (0.0.3)
+    chef-client (>= 0.0.0)
     chromium (>= 0.0.0)
+    odi-users (>= 0.0.0)
+  odi-users (0.2.0)
   yum (3.2.0)
