@@ -12,6 +12,6 @@ platforms:
       box_url: https://dl.dropboxusercontent.com/s/cd583cuf0mbcix7/debian-wheezy-64-chef.box
 
 suites:
-  - name: default
+  - name: server
     run_list:
     attributes:
