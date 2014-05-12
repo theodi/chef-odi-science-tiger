@@ -21,6 +21,7 @@ describe file '/home/pi/runchromium' do
   it { should be_executable }
   it { should be_owned_by 'pi'}
   its(:content) { should match '/usr/bin/chromium --kiosk --incognito' }
+  its(:content) { should match 'cat /home/pi/display-screen-content/tiger-01.csv' }
 end
 
 describe file '/home/pi/.config/lxsession/LXDE/autostart' do

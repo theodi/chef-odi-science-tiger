@@ -13,6 +13,9 @@ template '/home/pi/runchromium' do
   source 'runchromium.erb'
   mode '0755'
   owner 'pi'
+  variables(
+    hostname: Chef::Config[:node_name]
+  )
 end
 
 directory '/home/pi/.config/lxsession/LXDE' do
