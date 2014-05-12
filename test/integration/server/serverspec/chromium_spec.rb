@@ -1,11 +1,19 @@
 require 'spec_helper'
 
+describe command 'hostname' do
+  it { should return_stdout 'tiger-01' }
+end
+
 describe package 'chromium' do
   it { should be_installed }
 end
 
 describe user 'pi' do
   it { should exist }
+end
+
+describe file '/home/pi/display-screen-content/README.md' do
+  it { should be_file }
 end
 
 describe file '/home/pi/runchromium' do

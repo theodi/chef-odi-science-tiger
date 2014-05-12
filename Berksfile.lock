@@ -1,5 +1,4 @@
 DEPENDENCIES
-  chef-client
   chromium
     git: git://github.com/klyall/cookbook-chromium.git
     revision: c8d38d9b7678d12e481a76ecf5a5761ae3b1d8b2
@@ -13,17 +12,40 @@ DEPENDENCIES
 
 GRAPH
   apt (2.3.10)
+  build-essential (2.0.2)
   chef-client (3.5.0)
     cron (>= 1.2.0)
     logrotate (>= 1.2.0)
+  chef_handler (1.1.6)
   chromium (0.0.1)
     apt (>= 0.0.0)
     yum (>= 0.0.0)
   cron (1.4.0)
+  dmg (2.2.0)
+  git (4.0.2)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    runit (>= 1.0.0)
+    windows (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+  hostname (0.2.0)
+    hostsfile (>= 0.0.0)
+  hostsfile (2.4.4)
   logrotate (1.5.0)
   odi-science-tiger (0.0.6)
     chef-client (>= 0.0.0)
     chromium (>= 0.0.0)
+    git (>= 0.0.0)
+    hostname (>= 0.0.0)
     odi-users (>= 0.0.0)
   odi-users (0.2.0)
+  runit (1.5.10)
+    build-essential (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+  windows (1.31.0)
+    chef_handler (>= 0.0.0)
   yum (3.2.0)
+  yum-epel (0.3.6)
+    yum (~> 3.0)

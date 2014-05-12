@@ -1,6 +1,13 @@
 include_recipe 'chef-client'
 include_recipe 'odi-users'
 include_recipe 'chromium'
+include_recipe 'git'
+include_recipe 'hostname'
+
+git '/home/pi/display-screen-content' do
+  repository 'https://github.com/theodi/display-screen-content.git'
+  action :sync
+end
 
 template '/home/pi/runchromium' do
   source 'runchromium.erb'
