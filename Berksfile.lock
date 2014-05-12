@@ -33,7 +33,7 @@ GRAPH
     hostsfile (>= 0.0.0)
   hostsfile (2.4.4)
   logrotate (1.5.0)
-  odi-science-tiger (0.0.6)
+  odi-science-tiger (0.0.7)
     chef-client (>= 0.0.0)
     chromium (>= 0.0.0)
     git (>= 0.0.0)
