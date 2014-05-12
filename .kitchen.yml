@@ -1,9 +1,12 @@
 ---
+
 driver:
   name: vagrant
 
 provisioner:
   name: chef_solo
+  solo_rb:
+    node_name: tiger-01
 
 platforms:
   - name: debian-wheezy-7
@@ -13,7 +16,5 @@ platforms:
 
 suites:
   - name: server
-    node_name: tiger-01
     run_list:
       - recipe[odi-science-tiger::default]
-    attributes:
