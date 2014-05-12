@@ -1,0 +1,16 @@
+DEPENDENCIES
+  chromium
+    git: git://github.com/klyall/cookbook-chromium.git
+    revision: c8d38d9b7678d12e481a76ecf5a5761ae3b1d8b2
+  odi-science-tiger
+    path: .
+    metadata: true
+
+GRAPH
+  apt (2.3.10)
+  chromium (0.0.1)
+    apt (>= 0.0.0)
+    yum (>= 0.0.0)
+  odi-science-tiger (0.4.1)
+    chromium (>= 0.0.0)
+  yum (3.2.0)

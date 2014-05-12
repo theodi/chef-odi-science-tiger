@@ -14,4 +14,5 @@ platforms:
 suites:
   - name: server
     run_list:
+      - recipe[odi-science-tiger::default] 
     attributes:
