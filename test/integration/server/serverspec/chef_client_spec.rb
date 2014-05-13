@@ -7,5 +7,5 @@ describe 'chef-client' do
 end
 
 describe file '/etc/default/chef-client' do
-  its(:content) { should match /INTERVAL=300/ }
+  its(:content) { should match /INTERVAL=600/ }
 end
