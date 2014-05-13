@@ -14,6 +14,7 @@ end
 
 describe file '/home/pi/display-screen-content/README.md' do
   it { should be_file }
+  it { should be_owned_by 'pi' }
 end
 
 describe file '/home/pi/runchromium' do

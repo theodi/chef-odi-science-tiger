@@ -6,6 +6,7 @@ include_recipe 'hostname'
 
 git '/home/pi/display-screen-content' do
   repository 'https://github.com/theodi/display-screen-content.git'
+  user 'pi'
   action :sync
 end
 
