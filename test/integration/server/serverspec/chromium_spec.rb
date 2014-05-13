@@ -29,7 +29,7 @@ describe file '/home/pi/.config/lxsession/LXDE/autostart' do
   its(:content) { should match '@~/runchromium' }
 end
 
-describe file '/etc/xdg/lxsession/LXDE/autostart' do
+describe file '/etc/lightdm/lightdm.conf' do
   it { should be_file }
-  its(:content) { should_not match /xscreensaver/ }
+  its(:content) { should match /xserver-command=X -s 0 -dpms/ }
 end

@@ -29,14 +29,13 @@ template '/home/pi/.config/lxsession/LXDE/autostart' do
   owner 'pi'
 end
 
-directory '/etc/xdg/lxsession/LXDE' do
+directory '/etc/lightdm' do
   action :create
   recursive true
   owner 'root'
 end
 
-file '/etc/xdg/lxsession/LXDE/autostart' do
-  action :create
+template '/etc/lightdm/lightdm.conf' do
+  source 'lightdm.conf.erb'
   owner 'root'
-  content '# this file has been blanked out by chef'
 end
