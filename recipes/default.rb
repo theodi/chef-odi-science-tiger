@@ -1,22 +1,32 @@
 include_recipe 'chef-client'
 include_recipe 'odi-users'
-include_recipe 'chromium'
+include_recipe 'odi-apt'
 include_recipe 'git'
 include_recipe 'hostname'
+
+package 'lightdm' do
+  action :install
+end
+
+service 'lightdm' do
+  action :start
+end
 
 git '/home/pi/display-screen-content' do
   repository 'https://github.com/theodi/display-screen-content.git'
   user 'pi'
   action :sync
+  notifies :restart, 'service[lightdm]', :delayed
 end
 
-template '/home/pi/runchromium' do
-  source 'runchromium.erb'
+template '/home/pi/runbrowser' do
+  source 'runbrowser.erb'
   mode '0755'
   owner 'pi'
   variables(
     hostname: Chef::Config[:node_name]
   )
+  notifies :restart, 'service[lightdm]', :delayed
 end
 
 directory '/home/pi/.config/lxsession/LXDE' do
