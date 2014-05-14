@@ -8,6 +8,10 @@ package 'lightdm' do
   action :install
 end
 
+package 'chromium' do
+  action :install
+end
+
 service 'lightdm' do
   action :start
 end
