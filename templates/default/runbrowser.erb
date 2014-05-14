@@ -1,4 +1,17 @@
 #!/bin/bash
 
-DASH=`cat /home/pi/display-screen-content/<%= @hostname %>.csv`
-midori -e Fullscreen -a ${DASH}
+URL_FILE=/home/pi/display-screen-content/<%= @hostname %>.csv
+BROWSER_COMMAND="/usr/bin/midori -e Fullscreen -a"
+
+DASH=`cat ${URL_FILE} | cut -d ',' -f 1`
+
+[ "`grep , ${URL_FILE}`" ] && OTHER_BROWSER=`cat ${URL_FILE} | cut -d ',' -f 2`
+
+case ${OTHER_BROWSER} in
+  chromium)
+    BROWSER_COMMAND="/usr/bin/chromium --kiosk"
+esac
+
+echo ${BROWSER_COMMAND} ${DASH}
+
+${BROWSER_COMMAND} ${DASH}
