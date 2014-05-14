@@ -12,6 +12,13 @@ describe package 'chromium' do
   it { should be_installed }
 end
 
+describe file '/boot/config.txt' do
+  its(:content) { should match /overscan_left=-4/ }
+  its(:content) { should match /overscan_right=-4/ }
+  its(:content) { should match /overscan_top=-16/ }
+  its(:content) { should match /overscan_bottom=-16/ }
+end
+
 describe file '/home/pi/display-screen-content/README.md' do
   it { should be_file }
   it { should be_owned_by 'pi' }

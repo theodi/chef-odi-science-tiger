@@ -16,6 +16,11 @@ service 'lightdm' do
   action :start
 end
 
+template '/boot/config.txt' do
+  source 'config.txt.erb'
+  owner 'root'
+end
+
 git '/home/pi/display-screen-content' do
   repository 'https://github.com/theodi/display-screen-content.git'
   user 'pi'
