@@ -39,7 +39,7 @@ GRAPH
   logrotate (1.5.0)
   odi-apt (0.1.0)
     apt (>= 0.0.0)
-  odi-science-tiger (0.0.17)
+  odi-science-tiger (0.0.18)
     chef-client (>= 0.0.0)
     chromium (>= 0.0.0)
     git (>= 0.0.0)
