@@ -1,43 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
     <title>Science Tiger by theodi</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/theodi/chef-odi-science-tiger">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/theodi/chef-odi-science-tiger/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/theodi/chef-odi-science-tiger/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <header>
+      <div class="container">
+        <h1>Science Tiger</h1>
+        <h2></h2>
 
-      <section>
-        <div id="title">
-          <h1>Science Tiger</h1>
-          <p></p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/theodi">theodi</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+        <section id="downloads">
+          <a href="https://github.com/theodi/chef-odi-science-tiger/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/theodi/chef-odi-science-tiger/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/theodi/chef-odi-science-tiger" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
+    <div class="container">
+      <section id="main_content">
         <h1>
 <a name="science-tiger" class="anchor" href="#science-tiger"><span class="octicon octicon-link"></span></a>Science Tiger</h1>
 
@@ -89,7 +79,7 @@ NODENAME=naming-things-is-hard-01
 knife bootstrap ${PI_IP} -x pi -P raspberry -d raspbian -N ${NODENAME} -r 'recipe[odi-science-tiger]' --sudo
 </code></pre>
 
-<p>And you should have a working node - you'll need to reboot it at the end of the run to get it to pick up all the changes, but from then it will be in the hands of the Chef robots</p>
+<p>(or however you do this kind of thing with <em>chef-solo</em> or <em>chef-zero</em>) and you should have a working node - you'll need to reboot it at the end of the run to get it to pick up all the changes, but from then it will be in the hands of the Chef robots</p>
 
 <h2>
 <a name="changing-the-content" class="anchor" href="#changing-the-content"><span class="octicon octicon-link"></span></a>Changing the content</h2>
@@ -132,9 +122,8 @@ kitchen test
 
 <p>A Science Tiger is an animal that eats Information Radiators</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
   </body>
 </html>
