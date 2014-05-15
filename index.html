@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Science Tiger by theodi</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/theodi/chef-odi-science-tiger">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/theodi/chef-odi-science-tiger/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/theodi/chef-odi-science-tiger/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Science Tiger</h1>
+          <p></p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/theodi">theodi</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="science-tiger" class="anchor" href="#science-tiger"><span class="octicon octicon-link"></span></a>Science Tiger</h1>
+
+<p><img src="https://i.imgflip.com/8t5qu.jpg" alt="Dashboards in the ODI office"></p>
+
+<p>We have <a href="https://github.com/theodi/dashboards/">dashboards</a>. We have <a href="http://www.raspberrypi.org/">Raspberry Pis</a>. We have four big-screen TVs. If only there was some way we could bring these things together...</p>
+
+<p>We previously had a single Pi running just the <a href="http://dashboards.theodi.org/tech">Tech Team Dashboard</a> on a single screen, but it had been lashed together with chewing-gum and string and was a terrible <a href="http://martinfowler.com/bliki/SnowflakeServer.html">snowflake</a>. If we want multiple displays, we need some ROBOTS!</p>
+
+<h2>
+<a name="so-whats-in-here" class="anchor" href="#so-whats-in-here"><span class="octicon octicon-link"></span></a>So what's in here?</h2>
+
+<p>This is a pretty simple Chef cookbook that will build and manage a set of Pis, each of which will boot into <a href="http://midori-browser.org/">Midori</a> (by default) in kiosk-mode, showing a single URL</p>
+
+<h2>
+<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to use it</h2>
+
+<p>It relies upon another git repo: by default, it will use our <a href="https://github.com/theodi/display-screen-content">display-screen-content</a> but it's unlikely you're going to want to put our dashboards on your screens. So create your repo thus:</p>
+
+<ul>
+<li>a CSV file named for each of your nodes, containing</li>
+<li>a single line, containing</li>
+<li>a single field, <em>viz</em>. the URL you'd like to show on that node</li>
+<li>except...</li>
+</ul><h3>
+<a name="the-huboard-problem" class="anchor" href="#the-huboard-problem"><span class="octicon octicon-link"></span></a>The Huboard problem</h3>
+
+<p>Because REASONS, <a href="https://huboard.com/">Huboard</a> does not work at all on out-of-the-box Midori on Raspbian, and I expect other sites will be similarly afflicted. So you can add a second field to those CSVs to specify a browser - at the moment only Chromium is supported, and it's parsed with <a href="https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/runbrowser.erb">this horror-show</a>, but it's working for us. YMMV</p>
+
+<p>Whatever, set your new repo as the <strong>node['content_repo']</strong> attribute</p>
+
+<h2>
+<a name="bootstrapping" class="anchor" href="#bootstrapping"><span class="octicon octicon-link"></span></a>Bootstrapping</h2>
+
+<p>So how to actually get this running on a Pi? I've spent so long firing up Rackspace Cloud nodes with Vagrant, I'd forgotten how to <code>knife bootstrap</code>...</p>
+
+<h3>
+<a name="noobs" class="anchor" href="#noobs"><span class="octicon octicon-link"></span></a>NOOBS</h3>
+
+<p>The recommended way to get Raspbian onto an SD card these days is with <a href="http://www.raspberrypi.org/introducing-the-new-out-of-box-software-noobs/">NOOBS</a>, so download that and stick it on yer SD card, then boot the Pi with it (having first connected a screen, a mouse-and-keyboard, and a network cable). Choose Raspbian and let it do its thing, then at the red menu choose the thing that says something like 'Boot into GUI' (can't remember the exact words). It will reboot again, then it should log you in automatically. Open a terminal and run <code>ifconfig</code>, because you're going to need the IP address for the next step</p>
+
+<h3>
+<a name="knife" class="anchor" href="#knife"><span class="octicon octicon-link"></span></a>Knife</h3>
+
+<p>Presuming you have <a href="http://docs.opscode.com/knife.html"><code>knife</code></a> configured to talk to your Chef server, the next step should be as simple as:</p>
+
+<pre><code>PI_IP=whatever.you.got.above
+NODENAME=naming-things-is-hard-01
+knife bootstrap ${PI_IP} -x pi -P raspberry -d raspbian -N ${NODENAME} -r 'recipe[odi-science-tiger]' --sudo
+</code></pre>
+
+<p>And you should have a working node - you'll need to reboot it at the end of the run to get it to pick up all the changes, but from then it will be in the hands of the Chef robots</p>
+
+<h2>
+<a name="changing-the-content" class="anchor" href="#changing-the-content"><span class="octicon octicon-link"></span></a>Changing the content</h2>
+
+<p>You want to show a different URL? No problem. In whatever you're using for <em>content_repo</em>, change the CSV file for the node and push to master. On the next Chef run, the new CSV will be pulled onto the node and this change will trigger a restart of lightdm - we realise this is an extremely heavy-handed approach simply to get a browser to show a different URL, but our target URLs change infrequently so it's not a big deal for us. If, however, you know of a better way to do this, we're always open to PRs</p>
+
+<p>There's a caveat here, however: this change to a single node's CSV will cause all of the nodes to think they have new content and they'll <em>all</em> restart X at the end of their next Chef run. Again, this isn't a big deal for us as we don't change our content too often, but if you can think of a better way...</p>
+
+<h2>
+<a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>This cookbook has been built using <a href="http://kitchen.ci/">Test Kitchen</a>, to run the tests do:</p>
+
+<pre><code>git clone https://github.com/theodi/chef-odi-science-tiger
+cd chef-odi-science-tiger
+bundle
+berks install
+kitchen test
+</code></pre>
+
+<p>(You'll need Vagrant and VirtualBox installed, but I'm guessing that if you've read this far, you have those things)</p>
+
+<h2>
+<a name="next-steps" class="anchor" href="#next-steps"><span class="octicon octicon-link"></span></a>Next steps</h2>
+
+<p>This is very clearly not a finished thing. So:</p>
+
+<h3>
+<a name="rotating-the-urls" class="anchor" href="#rotating-the-urls"><span class="octicon octicon-link"></span></a>Rotating the URLs</h3>
+
+<p>We'd really like to be able to supply a list of URLs in those CSVs, and have the browser roll around them every minute or so. Anybody know an easy way to do this?</p>
+
+<h3>
+<a name="screen-size" class="anchor" href="#screen-size"><span class="octicon octicon-link"></span></a>Screen size</h3>
+
+<p>By default, we had some pretty thick black bars all around the edge of the displays (on our LG 42LN540V tellies). I've nailed in a fix for this <a href="https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/config.txt.erb">here</a> and <a href="https://github.com/theodi/chef-odi-science-tiger/blob/master/attributes/default.rb">here</a>, but having to potentially set these for each different screen type feels like a hack. Anybody got any suggestions?</p>
+
+<h2>
+<a name="wtf-is-a-science-tiger" class="anchor" href="#wtf-is-a-science-tiger"><span class="octicon octicon-link"></span></a>WTF is a Science Tiger?</h2>
+
+<p>A Science Tiger is an animal that eats Information Radiators</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
