@@ -19,6 +19,10 @@ end
 template '/boot/config.txt' do
   source 'config.txt.erb'
   owner 'root'
+  variables(
+    horizontal_overscan: node['overscan']['horizontal'],
+    vertical_overscan: node['overscan']['vertical']
+  )
 end
 
 git '/home/pi/display-screen-content' do

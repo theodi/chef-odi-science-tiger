@@ -1,4 +1,6 @@
 default['user'] = 'pi'
 default['set_fqdn'] = '*'
+default['overscan']['horizontal'] = '-4'
+default['overscan']['vertical'] = '-16'
 default['chef_client']['interval'] = '600'
 default['chef_client']['splay']       = '30'
