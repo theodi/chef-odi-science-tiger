@@ -1,3 +1,7 @@
+[![Dependency Status](http://img.shields.io/gemnasium/theodi/chef-odi-science-tiger.svg)](https://gemnasium.com/theodi/chef-odi-science-tiger)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://theodi.mit-license.org)
+[![Badges](http://img.shields.io/:badges-3/3-ff6799.svg)](https://github.com/badges/badgerbadgerbadger)
+
 #Science Tiger
 
 ![Dashboards in the ODI office](https://i.imgflip.com/8t5qu.jpg)
