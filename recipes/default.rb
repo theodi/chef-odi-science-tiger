@@ -26,7 +26,7 @@ template '/boot/config.txt' do
 end
 
 git '/home/pi/display-screen-content' do
-  repository 'https://github.com/theodi/display-screen-content.git'
+  repository node['content_repo']
   user 'pi'
   action :sync
   notifies :restart, 'service[lightdm]', :delayed
