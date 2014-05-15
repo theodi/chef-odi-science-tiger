@@ -41,7 +41,7 @@ Presuming you have [`knife`](http://docs.opscode.com/knife.html) configured to t
     NODENAME=naming-things-is-hard-01
     knife bootstrap ${PI_IP} -x pi -P raspberry -d raspbian -N ${NODENAME} -r 'recipe[odi-science-tiger]' --sudo
 
-And you should have a working node - you'll need to reboot it at the end of the run to get it to pick up all the changes, but from then it will be in the hands of the Chef robots
+(or however you do this kind of thing with _chef-solo_ or _chef-zero_) and you should have a working node - you'll need to reboot it at the end of the run to get it to pick up all the changes, but from then it will be in the hands of the Chef robots
 
 ##Changing the content
 
