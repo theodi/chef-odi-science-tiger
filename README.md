@@ -45,9 +45,9 @@ And you should have a working node - you'll need to reboot it at the end of the 
 
 ##Changing the content
 
-You want to show a different URL? No problem. In whatever you're using for _content_repo_, change the CSV file for the node and push to master. On the next Chef run, the new CSV will be pulled onto the node and this change will trigger a restart of lightdm - we realise this is an extremely heavy-handed approach simply to get a browser to a different URL, but our target URLs change infrequently so it's not a big deal for us. If, however, you know of a better way to do this, we're always open to PRs
+You want to show a different URL? No problem. In whatever you're using for _content_repo_, change the CSV file for the node and push to master. On the next Chef run, the new CSV will be pulled onto the node and this change will trigger a restart of lightdm - we realise this is an extremely heavy-handed approach simply to get a browser to show a different URL, but our target URLs change infrequently so it's not a big deal for us. If, however, you know of a better way to do this, we're always open to PRs
 
-There's a caveat here, however: this change to single node's CSV will cause all of the nodes to think they have new content and they'll _all_ restart X at the end of their next Chef run. Again, this isn't a big deal for us as we don't change our content too often, but if you can think of a better way...
+There's a caveat here, however: this change to a single node's CSV will cause all of the nodes to think they have new content and they'll _all_ restart X at the end of their next Chef run. Again, this isn't a big deal for us as we don't change our content too often, but if you can think of a better way...
 
 ##Tests
 
@@ -71,6 +71,8 @@ We'd really like to be able to supply a list of URLs in those CSVs, and have the
 
 ###Screen size
 
-By default, we had some pretty thick black bars all around the edge of the displays (on our LG 42LN540V tellies). I've nailed in a fix for this [here](https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/config.txt.erb) and [here](), but these should really be definable attributes, but then setting these for each 
+By default, we had some pretty thick black bars all around the edge of the displays (on our LG 42LN540V tellies). I've nailed in a fix for this [here](https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/config.txt.erb) and [here](https://github.com/theodi/chef-odi-science-tiger/blob/master/attributes/default.rb), but having to potentially set these for each different screen type feels like a hack. Anybody got any suggestions?
 
 ##WTF is a Science Tiger?
+
+A Science Tiger is an animal that eats Information Radiators
