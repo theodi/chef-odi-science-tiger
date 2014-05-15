@@ -80,3 +80,7 @@ By default, we had some pretty thick black bars all around the edge of the displ
 ##WTF is a Science Tiger?
 
 A Science Tiger is an animal that eats Information Radiators
+
+##License
+
+This code is open source under the MIT license. See the LICENSE.md file for full details
