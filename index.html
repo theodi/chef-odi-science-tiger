@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Science Tiger : " />
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Science Tiger by theodi</title>
+    <title>Science Tiger</title>
   </head>
 
   <body>
 
-    <header>
-      <div class="container">
-        <h1>Science Tiger</h1>
-        <h2></h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/theodi/chef-odi-science-tiger">View on GitHub</a>
 
-        <section id="downloads">
-          <a href="https://github.com/theodi/chef-odi-science-tiger/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/theodi/chef-odi-science-tiger/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/theodi/chef-odi-science-tiger" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+          <h1 id="project_title">Science Tiger</h1>
+          <h2 id="project_tagline"></h2>
 
-    <div class="container">
-      <section id="main_content">
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/theodi/chef-odi-science-tiger/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/theodi/chef-odi-science-tiger/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <p><a href="https://gemnasium.com/theodi/chef-odi-science-tiger"><img src="http://img.shields.io/gemnasium/theodi/chef-odi-science-tiger.svg" alt="Dependency Status"></a>
 <a href="http://theodi.mit-license.org"><img src="http://img.shields.io/:license-mit-blue.svg" alt="License"></a>
 <a href="https://github.com/badges/badgerbadgerbadger"><img src="http://img.shields.io/:badges-3/3-ff6799.svg" alt="Badges"></a></p>
@@ -59,7 +62,7 @@
 </ul><h3>
 <a name="the-huboard-problem" class="anchor" href="#the-huboard-problem"><span class="octicon octicon-link"></span></a>The Huboard problem</h3>
 
-<p>Because REASONS, <a href="https://huboard.com/">Huboard</a> does not work at all on out-of-the-box Midori on Raspbian, and I expect other sites will be similarly afflicted. So you can add a second field to those CSVs to specify a browser - at the moment only Chromium is supported, and it's parsed with <a href="https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/runbrowser.erb">this horror-show</a>, but it's working for us. YMMV</p>
+<p>Because REASONS, <a href="https://huboard.com/">Huboard</a> does not work at all on out-of-the-box Midori on Raspbian, and I expect other sites will be similarly afflicted. So you can add a second field to those CSVs to specify a browser - at the moment the only value supported there is <code>chromium</code>, and it's parsed with <a href="https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/runbrowser.erb">this horror-show</a>, but it's working for us. YMMV</p>
 
 <p>Whatever, set your new repo as the <strong>node['content_repo']</strong> attribute</p>
 
@@ -133,6 +136,15 @@ kitchen test
       </section>
     </div>
 
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Science Tiger maintained by <a href="https://github.com/theodi">theodi</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
