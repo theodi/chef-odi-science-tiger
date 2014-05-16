@@ -9,7 +9,7 @@ DASH=`cat ${URL_FILE} | cut -d ',' -f 1`
 
 case ${OTHER_BROWSER} in
   chromium)
-    BROWSER_COMMAND="/usr/bin/chromium --kiosk"
+    BROWSER_COMMAND="/usr/bin/chromium --kiosk --incognito"
 esac
 
 echo ${BROWSER_COMMAND} ${DASH}

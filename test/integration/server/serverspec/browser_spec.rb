@@ -30,7 +30,7 @@ describe file '/home/pi/runbrowser' do
   it { should be_owned_by 'pi'}
   its(:content) { should match '/home/pi/display-screen-content/tiger-01.csv' }
   its(:content) { should match 'midori -e Fullscreen -a' }
-  its(:content) { should match '/usr/bin/chromium --kiosk' }
+  its(:content) { should match '/usr/bin/chromium --kiosk --incognito' }
 end
 
 describe file '/home/pi/.config/lxsession/LXDE/autostart' do
