@@ -25,7 +25,7 @@ It relies upon another git repo: by default, it will use our [display-screen-con
 
 ###The Huboard problem
 
-Because REASONS, [Huboard](https://huboard.com/) does not work at all on out-of-the-box Midori on Raspbian, and I expect other sites will be similarly afflicted. So you can add a second field to those CSVs to specify a browser - at the moment only Chromium is supported, and it's parsed with [this horror-show](https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/runbrowser.erb), but it's working for us. YMMV
+Because REASONS, [Huboard](https://huboard.com/) does not work at all on out-of-the-box Midori on Raspbian, and I expect other sites will be similarly afflicted. So you can add a second field to those CSVs to specify a browser - at the moment the only value supported there is `chromium`, and it's parsed with [this horror-show](https://github.com/theodi/chef-odi-science-tiger/blob/master/templates/default/runbrowser.erb), but it's working for us. YMMV
 
 Whatever, set your new repo as the __node['content_repo']__ attribute
 
