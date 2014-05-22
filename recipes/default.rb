@@ -42,6 +42,18 @@ template '/home/pi/runbrowser' do
   notifies :restart, 'service[lightdm]', :delayed
 end
 
+directory '/home/pi/.config/midori' do
+  action :create
+  recursive true
+  owner 'pi'
+end
+
+template '/home/pi/.config/midori/config' do
+  source 'midori/config.erb'
+  mode '0755'
+  owner 'pi'
+end
+
 directory '/home/pi/.config/lxsession/LXDE' do
   action :create
   recursive true

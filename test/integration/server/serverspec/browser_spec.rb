@@ -38,6 +38,12 @@ describe file '/home/pi/.config/lxsession/LXDE/autostart' do
   its(:content) { should match '@~/runbrowser' }
 end
 
+describe file '/home/pi/.config/midori/config' do
+  it { should be_file }
+  it { should be_owned_by 'pi'}
+  its(:content) { should match 'enable-html5-local-storage=true' }
+end
+
 describe file '/etc/lightdm/lightdm.conf' do
   it { should be_file }
   its(:content) { should match /xserver-command=X -s 0 -nocursor -dpms/ }
